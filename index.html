@@ -29,6 +29,7 @@
 </head>
 
 <body>
+
   <!--Nav Bar, links to view high scores, and includes timer-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-brand" id="high-scores">View High Scores</button>
@@ -42,6 +43,7 @@
       </ul>
     </div>
   </nav>
+
   <!--Jumbotron with Code Quiz Instructions-->
   <div class="container-fluid">
     <div id="jumbotron">
@@ -56,18 +58,25 @@
     </div>
   </div>
 
-  <div id = "question-container">
-    <div id = "questions"></div>
-    <div id="options">
-        <div class = "option" id="optionA" data-index="1"></div>
-        <div class = "option" id="optionB" data-index="2"></div>
-        <div class = "option" id="optionC" data-index="3"></div>
-        <div class = "option" id="optionD" data-index="4"></div>
+  <!--Questions/Answers-->
+  <div class="quiz">
+    <div class="card m-auto w-75">
+      <div class="card-header">
+        <h2>Question</h2>
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote">
+          <ul></ul>
+          <footer>
+            <div class="feedback" style="padding-top:2%;"></div>
+          </footer>
+        </blockquote>
+      </div>
     </div>
-    <div id = 'result'></div>
-</div>
+  </div>
 
-  <script src='./script.js'></script>
+  <script src='./scripts/questions.js'></script>
+  <script src='./scripts/script.js'></script>
 </body>
 
 </html>

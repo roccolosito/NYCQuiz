@@ -11,4 +11,27 @@ hr {
     margin-right: auto;
     margin-top: 0;
     border-top: 0.25px solid lightgrey
+}
+
+/*Media Query styling*/
+@media screen and (max-width: 580px) { 
+   
+    #name  {
+        float: left;
+        width: 100%;
+        text-align: center;
+    }
+  
+    #about  {
+      display: block;
+    }
+  
+    #portfolio-container {
+        min-width: 100%;
+    }
+  
+    #navbarSupportedContent {
+        min-width: 100%;
+        justify-content: center;
+    }
   }

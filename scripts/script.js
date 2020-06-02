@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
+    // start time for counter
     var counter = 60;
 
+    // Timer Function, which kicks off when GO! is clicked and counts down from 60 (seconds)
     $("#start").click(function () {
         var interval = setInterval(function () {
             counter--;
