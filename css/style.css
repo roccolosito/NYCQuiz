@@ -1,0 +1,14 @@
+#jumbotron {
+    min-width: 585px;
+    margin: 10px auto;
+    justify-content: center;
+    margin: 200px 200px 200px 200px;
+}
+
+hr {
+    width: 19.5%;
+    margin-left: 0;
+    margin-right: auto;
+    margin-top: 0;
+    border-top: 0.25px solid lightgrey
+  }
