@@ -13,7 +13,7 @@ hr {
     border-top: 0.25px solid lightgrey
 }
 
-#quiz, #summary,  {
+#quiz, #summary, #answer-status, #summary{
     display: none;
     text-align: center;
     margin: 5px;
