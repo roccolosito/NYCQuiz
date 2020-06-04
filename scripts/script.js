@@ -1,5 +1,6 @@
 // Global Variable Assignment
 var counter = 60;
+var currentQuestion = 0;
 var questions = [
     {
         title: "How many languages are spoken in NYC?",
@@ -46,15 +47,14 @@ $(document).ready(function () {
     $(".answer").on("click", checkAnswer);
     
     $("#restart").on("click", restartGame);
-    
+
     function showQuestion() {
         $("#quiz h2").text(questions[currentQuestion].title);
 
         $("#quiz .answerA").text(questions[currentQuestion].answers[0]);
         $("#quiz .answerB").text(questions[currentQuestion].answers[1]);
         $("#quiz .answerC").text(questions[currentQuestion].answers[2]);
-        $("#quiz .answerD").text(questions[currentQuestion].answers[3]);
-        $(".box").show();
+        $("#box").show();
         $("#answer-status").hide();
         timer = 60;
         countDown = setInterval(counter, 1000);
@@ -91,12 +91,12 @@ $(document).ready(function () {
 
 
         if (currentQuestion === questions.length) {
-            $(".box").hide();
+            $("#box").hide();
             setTimeout(showResults, 2000);
 
 
         } else {
-            $(".box").hide();
+            $("#box").hide();
             setTimeout(showQuestion, 2000);
         }
     }
