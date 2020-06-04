@@ -36,8 +36,8 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <span id="timer">Time Left: 
-            <span id="time">60</span>    
+          <span id="timer">Time Left:
+            <span id="time">60</span>
           </span>
         </li>
       </ul>
@@ -48,9 +48,9 @@
   <div class="container-fluid">
     <div id="jumbotron">
       <h1 class="display-4">NYC History Quiz</h1>
-      <p class="lead">Test your historical knowledge of the best city in the world by quickly answering 
-        the following 4 questions. You'll have 60 seconds & every incorrect answers shaves off 5 seconds 
-        from the timer. Your final score is equal to the number of seconds left on the timer at the end 
+      <p class="lead">Test your historical knowledge of the best city in the world by quickly answering
+        the following 4 questions. You'll have 60 seconds & every incorrect answers shaves off 5 seconds
+        from the timer. Your final score is equal to the number of seconds left on the timer at the end
         of the game. Ready?
       </p>
       <hr class="my-4">
@@ -67,6 +67,11 @@
       <div class="card-body">
         <blockquote class="blockquote">
           <ul></ul>
+          <form action="/examples/html/action.php" method="post" id="myForm">
+            <label>Your Answer:</label>
+            <input type="text" name="first-name">
+            <button type="button" id="submitBtn">Submit</button>
+          </form>
           <footer>
             <div class="feedback" style="padding-top:2%;"></div>
           </footer>
@@ -80,4 +85,3 @@
 </body>
 
 </html>
-
