@@ -43,9 +43,13 @@ $(document).ready(function () {
         showQuestion();
     });
 
+    $(".answer").on("click", checkAnswer);
+    
+    $("#restart").on("click", restartGame);
+    
     function showQuestion() {
         $("#quiz h2").text(questions[currentQuestion].title);
-        
+
         $("#quiz .answerA").text(questions[currentQuestion].answers[0]);
         $("#quiz .answerB").text(questions[currentQuestion].answers[1]);
         $("#quiz .answerC").text(questions[currentQuestion].answers[2]);
@@ -55,12 +59,12 @@ $(document).ready(function () {
         timer = 60;
         countDown = setInterval(counter, 1000);
         console.log(questions[currentQuestion].answers);
-        }
-   
+    }
+
 
 
     function checkAnswer() {
-         
+
         stopCounter();
         console.log("clicked")
         guess = parseInt($(this).attr("value"))
@@ -68,33 +72,33 @@ $(document).ready(function () {
 
         if (guess === correctAnswer) {
 
-             
-             rightAnswers++;
-             $("#answer-result").text("Correct Answer!!");
-             $("#correct-answer").text("");
-             setImage("sheldonright.gif");
-        } else {
-             wrongAnswers++;
-             $("#answer-result").text("Sorry, Wrong Answer.")
-             $("#correct-answer").text("Correct answer was : " + questions[currentQuestion].answers[questions[currentQuestion].correct])
 
-             setImage("pennywrong.gif");
+            rightAnswers++;
+            $("#answer-result").text("Correct Answer!!");
+            $("#correct-answer").text("");
+            setImage("sheldonright.gif");
+        } else {
+            wrongAnswers++;
+            $("#answer-result").text("Sorry, Wrong Answer.")
+            $("#correct-answer").text("Correct answer was : " + questions[currentQuestion].answers[questions[currentQuestion].correct])
+
+            setImage("pennywrong.gif");
         }
 
         currentQuestion++;
-        
-       
-        
-        
+
+
+
+
         if (currentQuestion === questions.length) {
-             $(".box").hide();
-             setTimeout(showResults, 2000);
-             
-        
+            $(".box").hide();
+            setTimeout(showResults, 2000);
+
+
         } else {
-             $(".box").hide();
-             setTimeout(showQuestion, 2000);
+            $(".box").hide();
+            setTimeout(showQuestion, 2000);
         }
-   }
+    }
 
 })
