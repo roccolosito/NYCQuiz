@@ -18,6 +18,7 @@ $(document).ready(function () {
         $("#start").hide();
         $("#jumbotron").hide();
         $("#quiz").show();
+        $("#blockquote").show();
         showQuestion();
     });
 
