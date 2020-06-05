@@ -1,6 +1,11 @@
 // Global Variable Assignment
 var counter = 60;
 var currentQuestion = 0;
+var rightAnswers = 0;
+var wrongAnswers = 0;
+var intervalId;
+var guess;
+var unansweredQuestions = 0;
 var questions = [
     {
         title: "How many languages are spoken in NYC?",
@@ -26,7 +31,7 @@ var questions = [
 
 $(document).ready(function () {
 
-    // Timer Function, which kicks off when GO! is clicked and counts down from 60 (seconds)
+    // Timer Function, which kicks off when GO! is clicked and counts down from 60 (seconds).
     $("#start").click(function () {
         var interval = setInterval(function () {
             counter--;
@@ -45,9 +50,10 @@ $(document).ready(function () {
     });
 
     $(".answer").on("click", checkAnswer);
-    
+
     $("#restart").on("click", restartGame);
 
+    // Function to display questions and answers.
     function showQuestion() {
         $("#quiz h2").text(questions[currentQuestion].title);
 
@@ -62,7 +68,7 @@ $(document).ready(function () {
     }
 
 
-
+    // Function to check to see if user's input is correct or incorrect.
     function checkAnswer() {
 
         stopCounter();
@@ -76,17 +82,13 @@ $(document).ready(function () {
             rightAnswers++;
             $("#answer-result").text("Correct Answer!!");
             $("#correct-answer").text("");
-            setImage("sheldonright.gif");
         } else {
             wrongAnswers++;
             $("#answer-result").text("Sorry, Wrong Answer.")
-            $("#correct-answer").text("Correct answer was : " + questions[currentQuestion].answers[questions[currentQuestion].correct])
-
-            setImage("pennywrong.gif");
+            $("#correct-answer").text("Correct answer was : " + questions[currentQuestion].answers[questions[currentQuestion].correct]);
         }
-
+        counter = counter -= 5
         currentQuestion++;
-
 
 
 
@@ -99,6 +101,10 @@ $(document).ready(function () {
             $("#box").hide();
             setTimeout(showQuestion, 2000);
         }
+    }
+
+    function stopCounter() {
+        clearInterval(countDown);
     }
 
 })
