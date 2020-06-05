@@ -107,4 +107,13 @@ $(document).ready(function () {
         clearInterval(countDown);
     }
 
+    function showResults() {
+        $("#quiz").hide();
+        $("#timer").hide();
+        $("#summary").show();
+        $("#answer-status").hide();
+        $("#summary p").text("You scored " + rightAnswers + " out of " + questions.length + " correct!");
+
+    }
+
 })
