@@ -82,6 +82,23 @@
     <button id="restart">Restart Game</button>
   </div>
 
+    <!-- Score & Initials -->
+
+    <div class="scoreContainer m-auto w-75">
+      <div id="initialsArray">
+            Finished!
+          </div>
+          <div class="card-body">
+            <p class="card-text">Your score is <span id="scoreNumber"></span>.</p>
+            <form id="initials-form" method="POST">
+              <label for="initials-text">Enter initials:</label>
+              <input type="text" placeholder="" name="initials-text" id="initials-text" />
+            </form>
+            <button id="submit-initials" value="submit" class="btn btn-secondary">Submit</button>
+          </div>
+        </div>
+    </div>
+
 
   <script src='./scripts/questions.js'></script>
   <script src='./scripts/script.js'></script>

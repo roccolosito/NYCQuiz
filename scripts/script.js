@@ -110,7 +110,8 @@ $(document).ready(function () {
     function showResults() {
         $("#quiz").hide();
         $("#timer").hide();
-        $("#summary").show();
+        // $("#summary").show();
+        $(".scoreContainer").show();
         $("#answer-status").hide();
         $("#summary p").text("You scored " + rightAnswers + " out of " + questions.length + " correct!");
 
