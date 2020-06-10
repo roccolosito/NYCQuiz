@@ -74,15 +74,15 @@ $(document).ready(function () {
         stopCounter();
         console.log("clicked")
         guess = parseInt($(this).attr("value"))
-        let correctAnswer = questions[currentQuestion].correct;
+        let correct = questions[currentQuestion].correctAnswer;
 
-        if (guess === correctAnswer) {
-            rightAnswers++;
+        if (guess === correct) {
+            // rightAnswers++;
         } else {
-            wrongAnswers++;
+            // wrongAnswers++;
+            counter = counter -= 5;
         }
         // Counter drops 5 seconds for wrong answer. Question advances by 1 after answered.
-        counter = counter -= 5
         currentQuestion++;
 
         if (currentQuestion === questions.length) {
@@ -104,6 +104,7 @@ $(document).ready(function () {
     function showResults() {
         $("#quiz").hide();
         $("#timer").hide();
+        $("#score").append(counter);
         $("#finalscore").show();
         $("#username").show();
         $("#answer-status").hide();
