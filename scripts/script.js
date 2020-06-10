@@ -35,7 +35,7 @@ $(document).ready(function () {
     $("#start").click(function () {
         var interval = setInterval(function () {
             counter--;
-            if (counter <= 0) {
+            if (0 >= counter) {
                 console.log("Timer 0 --> " + counter);
                 return clearInterval(interval);
             } else {
@@ -77,29 +77,21 @@ $(document).ready(function () {
         let correctAnswer = questions[currentQuestion].correct;
 
         if (guess === correctAnswer) {
-
-
             rightAnswers++;
-            $("#answer-result").text("Correct Answer!!");
-            $("#correct-answer").text("");
         } else {
             wrongAnswers++;
-            $("#answer-result").text("Sorry, Wrong Answer.")
-            $("#correct-answer").text("Correct answer was : " + questions[currentQuestion].answers[questions[currentQuestion].correct]);
         }
+        // Counter drops 5 seconds for wrong answer. Question advances by 1 after answered.
         counter = counter -= 5
         currentQuestion++;
 
-
-
         if (currentQuestion === questions.length) {
             $("#box").hide();
-            setTimeout(showResults, 2000);
-
+            setTimeout(showResults);
 
         } else {
             $("#box").hide();
-            setTimeout(showQuestion, 2000);
+            setTimeout(showQuestion);
         }
     }
 
@@ -107,14 +99,14 @@ $(document).ready(function () {
         clearInterval(countDown);
     }
 
+    // Function to show Score at game's end & allow User to enter their Name,
+    // go Back, and clear Scores.
     function showResults() {
         $("#quiz").hide();
         $("#timer").hide();
-        // $("#summary").show();
-        $(".scoreContainer").show();
+        $("#finalscore").show();
+        $("#username").show();
         $("#answer-status").hide();
-        $("#summary p").text("You scored " + rightAnswers + " out of " + questions.length + " correct!");
-
     }
 
 })

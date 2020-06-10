@@ -32,7 +32,7 @@
 
   <!--Nav Bar, links to view high scores, and includes timer-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-brand" id="high-scores">View High Scores</button>
+    <!-- <button class="navbar-brand" id="high-scores">View High Scores</button> -->
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
@@ -74,31 +74,26 @@
     <p id="answer-result"></p>
     <p id="correct-answer"></p>
   </div>
-  
-  <!--End of game results section-->
-  <div id="summary">
-    <h2>Your Results</h2>
-    <p>You scored x out of y correct!!</p>
-    <button id="restart">Restart Game</button>
+
+    <!-- Quiz End, Submit Name, and High Scores -->
+  <div id="finalscore" style="display:none">
+    <h3>Finished!!</h3>
+    <p>Final Score: <span id='score'>0 </span></p>
+    <form id="username">
+      <label>Your Name: </label>
+      <input type="text" id="userinput" />
+      <input type="button" value="Submit" id="submitName" />
+    </form>
   </div>
 
-    <!-- Score & Initials -->
-
-    <div class="scoreContainer m-auto w-75">
-      <div id="initialsArray">
-            Finished!
-          </div>
-          <div class="card-body">
-            <p class="card-text">Your score is <span id="scoreNumber"></span>.</p>
-            <form id="initials-form" method="POST">
-              <label for="initials-text">Enter initials:</label>
-              <input type="text" placeholder="" name="initials-text" id="initials-text" />
-            </form>
-            <button id="submit-initials" value="submit" class="btn btn-secondary">Submit</button>
-          </div>
-        </div>
-    </div>
-
+  <div id="highscore" style="display:none">
+    <h3>High Scores</h3>
+    <ul id="playerlist"></ul>
+    <form id="menu">
+      <input type="button" value="GoBack" id="goBackMenu" />
+      <input type="button" value="Clear HighScore" id="clearScore" />
+    </form>
+  </div>
 
   <script src='./scripts/questions.js'></script>
   <script src='./scripts/script.js'></script>
