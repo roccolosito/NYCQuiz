@@ -5,7 +5,6 @@ var rightAnswers = 0;
 var wrongAnswers = 0;
 var intervalId;
 var guess;
-var unansweredQuestions = 0;
 var questions = [
     {
         title: "How many languages are spoken in NYC?",
@@ -31,12 +30,18 @@ var questions = [
 
 $(document).ready(function () {
 
+    // Hide Final Score & High Scores sections when webpage is first loaded.
+    $("#finalscore").hide();
+    $("#highscore").hide();
+
     // Timer Function, which kicks off when GO! is clicked and counts down from 60 (seconds).
     $("#start").click(function () {
         var interval = setInterval(function () {
             counter--;
-            if (0 >= counter) {
+            if (-1 >= counter) {
                 console.log("Timer 0 --> " + counter);
+                showResults(); 
+                $("#score").text("0");
                 return clearInterval(interval);
             } else {
                 $('#time').text(counter);
@@ -67,7 +72,6 @@ $(document).ready(function () {
         console.log(questions[currentQuestion].answers);
     }
 
-
     // Function to check to see if user's input is correct or incorrect.
     function checkAnswer() {
 
@@ -77,17 +81,16 @@ $(document).ready(function () {
         let correct = questions[currentQuestion].correctAnswer;
 
         if (guess === correct) {
-            // rightAnswers++;
+            console.log(guess);
         } else {
-            // wrongAnswers++;
+            // Counter drops 5 seconds for wrong answer
             counter = counter -= 5;
         }
-        // Counter drops 5 seconds for wrong answer. Question advances by 1 after answered.
+
         currentQuestion++;
 
         if (currentQuestion === questions.length) {
-            $("#box").hide();
-            setTimeout(showResults);
+            showResults();
 
         } else {
             $("#box").hide();
@@ -99,14 +102,13 @@ $(document).ready(function () {
         clearInterval(countDown);
     }
 
-    // Function to show Score at game's end & allow User to enter their Name,
-    // go Back, and clear Scores.
+    // Function to show Score at game's end & allow User to enter their Name.
     function showResults() {
         $("#quiz").hide();
         $("#timer").hide();
         $("#score").append(counter);
         $("#finalscore").show();
-        $("#username").show();
+        $("#user-initials").show();
         $("#answer-status").hide();
     }
 
