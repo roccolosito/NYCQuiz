@@ -32,7 +32,7 @@ $(document).ready(function () {
 
     // Hide Final Score & High Scores sections when webpage is first loaded.
     $("#finalscore").hide();
-    $("#highscore").hide();
+    $("#high-score").hide();
 
     // Timer Function, which kicks off when GO! is clicked and counts down from 60 (seconds).
     $("#start").click(function () {
@@ -83,7 +83,7 @@ $(document).ready(function () {
         if (guess === correct) {
             console.log(guess);
         } else {
-            // Counter drops 5 seconds for wrong answer
+            // Counter drops 5 seconds for every wrong answer
             counter = counter -= 5;
         }
 
@@ -111,5 +111,20 @@ $(document).ready(function () {
         $("#user-initials").show();
         $("#answer-status").hide();
     }
+
+
+    // Function to show High Scores, and allow user to Go Back and/or Clear High Scores.
+    // $("#submitInitials").click(function showHighScores() {
+    //     $("#finalscore").hide();
+    //     $("#high-score").hide();
+    //     $("#go-back").hide();
+    //     $("#clear-score").hide();
+    //     $("#high-score").show();
+    //     $("#go-back").show();
+    //     $("#clear-score").show();
+    // } 
+
+    // showHighScores();
+
 
 })
