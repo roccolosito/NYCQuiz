@@ -1,10 +1,11 @@
 // Global Variable Assignment
 var counter = 60;
+var interval;
 var currentQuestion = 0;
 var rightAnswers = 0;
 var wrongAnswers = 0;
-var intervalId;
 var guess;
+
 var questions = [
     {
         title: "How many languages are spoken in NYC?",
@@ -31,16 +32,17 @@ var questions = [
 $(document).ready(function () {
 
     // Hide Final Score & High Scores sections when webpage is first loaded.
-    $("#finalscore").hide();
+    $("#final-score").hide();
     $("#high-score").hide();
 
     // Timer Function, which kicks off when GO! is clicked and counts down from 60 (seconds).
-    $("#start").click(function () {
+    $("#start").click(function clock() {
+        event.preventDefault();
         var interval = setInterval(function () {
             counter--;
             if (-1 >= counter) {
                 console.log("Timer 0 --> " + counter);
-                showResults(); 
+                showResults();
                 $("#score").text("0");
                 return clearInterval(interval);
             } else {
@@ -54,14 +56,29 @@ $(document).ready(function () {
         showQuestion();
     });
 
-    $(".answer").on("click", checkAnswer);
+    // function stopCounter() {
+    //     if (currentQuestion === questions.length)
+    //         // showResults();
+    //         clearInterval(interval);
+    // }
 
-    $("#restart").on("click", restartGame);
+    function stopCounter() {
+        var counter = 60;
+        var interval = setInterval(function () {
+            counter--;
+            $('#time').text(counter);
+            if (counter != undefined) {
+                clearInterval(interval);
+                counter = undefined;
+            }
+        }, 1000);
+    }
+
+    $(".answer").on("click", checkAnswer);
 
     // Function to display questions and answers.
     function showQuestion() {
         $("#quiz h2").text(questions[currentQuestion].title);
-
         $("#quiz .answerA").text(questions[currentQuestion].answers[0]);
         $("#quiz .answerB").text(questions[currentQuestion].answers[1]);
         $("#quiz .answerC").text(questions[currentQuestion].answers[2]);
@@ -69,14 +86,12 @@ $(document).ready(function () {
         $("#answer-status").hide();
         timer = 60;
         countDown = setInterval(counter, 1000);
-        console.log(questions[currentQuestion].answers);
+        // console.log(questions[currentQuestion].answers);
     }
 
     // Function to check to see if user's input is correct or incorrect.
     function checkAnswer() {
 
-        stopCounter();
-        console.log("clicked")
         guess = parseInt($(this).attr("value"))
         let correct = questions[currentQuestion].correctAnswer;
 
@@ -91,6 +106,7 @@ $(document).ready(function () {
 
         if (currentQuestion === questions.length) {
             showResults();
+            // stopCounter(interval);
 
         } else {
             $("#box").hide();
@@ -98,33 +114,49 @@ $(document).ready(function () {
         }
     }
 
-    function stopCounter() {
-        clearInterval(countDown);
-    }
-
     // Function to show Score at game's end & allow User to enter their Name.
     function showResults() {
+        // stopCounter(interval);
         $("#quiz").hide();
         $("#timer").hide();
         $("#score").append(counter);
-        $("#finalscore").show();
+        $("#final-score").show();
         $("#user-initials").show();
         $("#answer-status").hide();
     }
 
+    // Click event to allow user to input their initials and show the Leaderboard 
+    $(".submit-initials").click(function () {
+        console.log("button clicked")
+        // stopCounter(interval);
+        event.preventDefault();
+        event.stopPropagation();
+        $("#high-score").show();
+        $("#player-list").show();
+        $("#menu").show();
+        $("#final-score").hide();
+        var initials = $("#user-input").val().trim();
+        $("#player-list").text(initials);
+        localStorage.setItem("userInitials", initials);
+        // localStorage.getItem(initials);
+    })
 
-    // Function to show High Scores, and allow user to Go Back and/or Clear High Scores.
-    // $("#submitInitials").click(function showHighScores() {
-    //     $("#finalscore").hide();
-    //     $("#high-score").hide();
-    //     $("#go-back").hide();
-    //     $("#clear-score").hide();
-    //     $("#high-score").show();
-    //     $("#go-back").show();
-    //     $("#clear-score").show();
-    // } 
+    // Click event to allow user to go back to the start of the game 
+    $(".go-back").click(function () {
+        // stopCounter(interval);
+        event.preventDefault();
+        event.stopPropagation();
+        $("#jumbotron").show();
+        $("#start").show();
+        $("#timer").show();
+        $("#high-score").hide();
+    })
 
-    // showHighScores();
-
+    // Click event to allow user to clear out the Leaderboard
+    $(".clear-score").click(function () {
+        event.preventDefault();
+        event.stopPropagation();
+        $("#player-list").text('');
+    })
 
 })

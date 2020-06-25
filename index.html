@@ -54,7 +54,7 @@
         of the game. Ready?
       </p>
       <hr class="my-4">
-      <button id="start" class="btn btn-secondary">GO!</button>
+      <button type="button" id="start" class="btn btn-secondary">GO!</button>
     </div>
   </div>
 
@@ -63,9 +63,9 @@
     <h2>Question</h2>
 
     <div class="box">
-      <button class="answerA answer" value=0>Answer</button>
-      <button class="answerB answer" value=1>Answer</button>
-      <button class="answerC answer" value=2>Answer</button>
+      <button type="button" class="answerA answer" value=0>Answer</button>
+      <button type="button" class="answerB answer" value=1>Answer</button>
+      <button type="button" class="answerC answer" value=2>Answer</button>
     </div>
   </div>
 
@@ -76,22 +76,22 @@
   </div>
 
     <!-- Quiz End, Submit Name, and High Scores -->
-  <div id="finalscore">
+  <div id="final-score">
     <h3>Finished!</h3>
     <p>Final Score: <span id='score'></span></p>
     <form id="user-initials">
       <label>Your Initials: </label>
-      <input type="text" id="userinput" />
-      <input type="button" value="Submit" id="submitInitials" />
+      <input type="text" id="user-input" />
+      <input type = "button" value = "Submit" class ="submit-initials"/>
     </form>
   </div>
 
   <div id="high-score">
-    <h3>High Scores</h3>
-    <ul id="playerlist"></ul>
+    <h3>Leaderboard</h3>
+    <ul id="player-list"></ul>
     <form id="menu">
-      <input type="button" value="GoBack" id="go-back" />
-      <input type="button" value="ClearHighScore" id="clear-score" />
+      <input type="button" value="Back" class="go-back" />
+      <input type="button" value="Clear High Score" class="clear-score" />
     </form>
   </div>
 
